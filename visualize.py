@@ -2,7 +2,6 @@ import pymongo
 import json
 import matplotlib.pyplot as plt
 
-# Step 1: Connect to MongoDB
 client = pymongo.MongoClient("mongodb://localhost:27017/")  # Replace with your MongoDB connection string
 db = client["book_ratings_db"]  # Database name
 
@@ -10,7 +9,7 @@ db = client["book_ratings_db"]  # Database name
 ratings_collection = db["ratings"]
 metadata_collection = db["metadata"]
 
-# Step 2: Fetch average ratings for each book (same as before)
+
 avg_ratings = ratings_collection.aggregate([
     {
         "$group": {
@@ -41,7 +40,7 @@ for idx, book in enumerate(top_books, 1):
     print(f"{idx}. {book['title']} - Average Rating: {book['avg_rating']:.2f}")
 
 
-# Step 3: Fetch most rated books (top 10 with highest number of ratings)
+
 most_rated_books = ratings_collection.aggregate([
     {
         "$group": {
@@ -71,7 +70,7 @@ print("\nTop 10 Most Rated Books:")
 for idx, book in enumerate(top_most_rated_books, 1):
     print(f"{idx}. {book['title']} - Number of Ratings: {book['rating_count']}")
 
-# Step 4: Visualization of the top 10 books by average rating
+
 book_titles = [book['title'] for book in top_books]
 avg_ratings = [book['avg_rating'] for book in top_books]
 
@@ -82,7 +81,7 @@ plt.title('Top 10 Books by Average Rating')
 plt.gca().invert_yaxis()  # Invert y-axis to show the highest rating at the top
 plt.show()
 
-# Step 5: Visualization of the top 10 most rated books
+
 most_rated_book_titles = [book['title'] for book in top_most_rated_books]
 rating_counts = [book['rating_count'] for book in top_most_rated_books]
 

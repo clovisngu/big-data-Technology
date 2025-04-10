@@ -7,4 +7,6 @@ Wrote parts of the final report and presentation slides (objectives, introductio
 
 Clovis Cheo:
 
-Aleksei Ossipov:
+Aleksei Ossipov: Engineered features like average survey ratings and amount of people rating a specific score.
+Created visualisations using MatPlotLib. 
+Wrote parts of the final report (Implementation, Results and Insights, Visualisation)

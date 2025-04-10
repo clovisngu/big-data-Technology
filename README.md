@@ -6,6 +6,10 @@ Ran queries using MongoDB Aggregation Framework for analysis. Created visualizat
 Wrote parts of the final report and presentation slides (objectives, introduction, methodology, insights, visualization).
 
 Clovis Cheo:
+Processed large JSON files with PySpark.
+Analyzed book metadata, user ratings, and tag counts.
+Computed stats and extracted top tags using Spark.
+Prepared summary report and presentation.
 
 Aleksei Ossipov: Engineered features like average survey ratings and amount of people rating a specific score.
 Created visualisations using MatPlotLib. 

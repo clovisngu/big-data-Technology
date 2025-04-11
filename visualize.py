@@ -2,8 +2,8 @@ import pymongo
 import json
 import matplotlib.pyplot as plt
 
-client = pymongo.MongoClient("mongodb://localhost:27017/")  # Replace with your MongoDB connection string
-db = client["book_ratings_db"]  # Database name
+client = pymongo.MongoClient("mongodb://localhost:27017/")  
+db = client["book_ratings_db"]  
 
 # Collections
 ratings_collection = db["ratings"]
@@ -27,14 +27,14 @@ for avg in avg_ratings:
     item_id = avg["_id"]
     avg_rating = avg["avg_rating"]
 
-    # Find the book title using the item_id
+    # book title using the item_id
     book = metadata_collection.find_one({"item_id": item_id})
 
     if book:
         title = book["title"]
         top_books.append({"title": title, "avg_rating": avg_rating})
 
-# Print the top 10 books by average rating
+# top 10 books by average rating
 print("\nTop 10 Books by Average Rating:")
 for idx, book in enumerate(top_books, 1):
     print(f"{idx}. {book['title']} - Average Rating: {book['avg_rating']:.2f}")
@@ -58,14 +58,14 @@ for book in most_rated_books:
     item_id = book["_id"]
     rating_count = book["rating_count"]
 
-    # Find the book title using the item_id
+    # book title using the item_id
     book_metadata = metadata_collection.find_one({"item_id": item_id})
 
     if book_metadata:
         title = book_metadata["title"]
         top_most_rated_books.append({"title": title, "rating_count": rating_count})
 
-# Print the top 10 most rated books
+# top 10 most rated books
 print("\nTop 10 Most Rated Books:")
 for idx, book in enumerate(top_most_rated_books, 1):
     print(f"{idx}. {book['title']} - Number of Ratings: {book['rating_count']}")

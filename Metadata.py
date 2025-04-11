@@ -1,8 +1,8 @@
 import pymongo
 import json
 
-client = pymongo.MongoClient("mongodb://localhost:27017/")  # Replace with your MongoDB connection string
-db = client["book_ratings_db"]  # Database name
+client = pymongo.MongoClient("mongodb://localhost:27017/")  
+db = client["book_ratings_db"]  
 
 # Collections
 ratings_collection = db["ratings"]
@@ -33,7 +33,7 @@ metadata_collection.insert_many(metadata_data)
 
 
 
-# Aggregate average ratings for each book
+# average ratings for each book
 avg_ratings = ratings_collection.aggregate([
     {
         "$group": {
@@ -48,7 +48,7 @@ for avg in avg_ratings:
     item_id = avg["_id"]
     avg_rating = avg["avg_rating"]
 
-    # Find the book title using the item_id
+    # book title using the item_id
     book = metadata_collection.find_one({"item_id": item_id})
 
     if book:
